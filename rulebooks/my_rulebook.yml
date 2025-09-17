@@ -1,16 +1,16 @@
 ---
-name: demo
-hosts: localhost
-sources:
-  - EventSource:
-      name: builtin
-      source_name: builtin
-      source_args: {}
-rules:
-  - name: always
-    condition:
-      AllCondition:
-        - Boolean: true
-    action:
-      run_playbook:
-        name: debug.yml
+- name: demo
+  hosts: localhost
+  sources:
+    - EventSource:
+        name: builtin
+        source_name: builtin
+        source_args: {}
+  rules:
+    - name: always
+      condition:
+        AllCondition:
+          - Boolean: true
+      action:
+        run_playbook:
+          name: debug.yml
