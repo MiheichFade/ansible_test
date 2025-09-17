@@ -1,0 +1,22 @@
+---
+- name: Demo Rulebook
+  hosts: localhost
+  sources:
+    - name: builtin
+      source_name: builtin
+      source_args: {}
+  rules:
+    - name: add_to_audit
+      condition:
+        all:
+          - fact:
+              name: demo_task_done
+              value: true
+      actions:
+        - action: debug
+          action_args:
+            msg: "Demo task completed — adding to rule audit"
+        - action: append_to_list
+          action_args:
+            list_name: rule_audit
+            value: "Demo task executed at {{ ansible_date_time.iso8601 }}"
