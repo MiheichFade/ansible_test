@@ -9,8 +9,8 @@
   rules:
     - name: always_trigger
       condition:
-        AllCondition:
-          - Boolean: true
+        all:
+          - true
       actions:
         - debug:
             msg: "This is a built-in test event: {{ event }}"
