@@ -5,7 +5,7 @@
     - builtin: {}
   rules:
     - name: add_to_audit
-      condition: "demo_task_done == true"
+      condition: "<<demo_task_done>>"
       actions:
         - action: debug
           action_args:
