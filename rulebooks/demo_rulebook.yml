@@ -6,17 +6,15 @@
   rules:
     - name: add_to_audit
       condition:
-        AllCondition:
-          - FactCondition:
+        all:
+          - fact:
               name: demo_task_done
               value: true
       actions:
-        - Action:
-            action: debug
-            action_args:
-              msg: "Demo task completed — adding to rule audit"
-        - Action:
-            action: set_fact
-            action_args:
-              fact_name: rule_audit
-              fact_value: "{{ rule_audit | default([]) + ['Demo task executed at ' ~ ansible_date_time.iso8601] }}"
+        - action: debug
+          action_args:
+            msg: "Demo task completed — adding to rule audit"
+        - action: set_fact
+          action_args:
+            fact_name: rule_audit
+            fact_value: "{{ rule_audit | default([]) + ['Demo task executed at ' ~ ansible_date_time.iso8601] }}"
