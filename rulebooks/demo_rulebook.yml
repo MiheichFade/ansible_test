@@ -2,10 +2,16 @@
 - name: Demo Rulebook
   hosts: localhost
   sources:
-    - builtin: {}
+    - name: builtin
+      source_name: builtin
+      source_args: {}
   rules:
     - name: add_to_audit
-      condition: "<<demo_task_done>>"
+      condition:
+        all:
+          - fact:
+              name: demo_task_done
+              value: true
       actions:
         - action: debug
           action_args:
