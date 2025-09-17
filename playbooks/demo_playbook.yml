@@ -1,0 +1,13 @@
+---
+- name: Demo Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create a demo file
+      ansible.builtin.file:
+        path: /tmp/demo_file.txt
+        state: touch
+
+    - name: Set a fact to indicate task was done
+      ansible.builtin.set_fact:
+        demo_task_done: true
