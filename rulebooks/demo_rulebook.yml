@@ -2,7 +2,7 @@
 - name: Demo Rulebook
   hosts: localhost
   sources:
-    - name: builtin
+    - name: demo_source
       source_name: builtin
       source_args: {}
   rules:
