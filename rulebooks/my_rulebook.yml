@@ -3,12 +3,14 @@
   hosts: localhost
   sources:
     - EventSource:
-        name: builtin
+        name: builtin-source
         source_name: builtin
         source_args: {}
   rules:
     - name: always_trigger
-      condition: "true"
+      condition:
+        AllCondition:
+          - Boolean: true
       actions:
         - debug:
             msg: "This is a built-in test event: {{ event }}"
