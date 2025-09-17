@@ -2,15 +2,13 @@
 - name: demo
   hosts: localhost
   sources:
-    - EventSource:
-        name: builtin
-        source_name: builtin
-        source_args: {}
+    - ansible.eda.periodic:
+        interval: 5  # раз в 5 секунд событие
   rules:
-    - name: always
+    - name: print_event
       condition:
-        AllCondition:
+        all:
           - Boolean: true
-      action:
-        run_playbook:
-          name: debug.yml
+      actions:
+        - debug:
+            msg: "Periodic event triggered: {{ event }}"
