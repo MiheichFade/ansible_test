@@ -3,12 +3,10 @@
   hosts: localhost
   sources:
     - ansible.eda.periodic:
-        interval: 5  # раз в 5 секунд событие
+        interval: 5
   rules:
-    - name: print_event
-      condition:
-        all:
-          - Boolean: true
+    - name: always_true
+      condition: "true"
       actions:
         - debug:
             msg: "Periodic event triggered: {{ event }}"
