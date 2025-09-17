@@ -2,9 +2,8 @@
 - name: demo
   hosts: localhost
   sources:
-    - EventSource:
-        name: builtin-source
-        source_name: builtin
+    - builtin:
+        name: builtin
         source_args: {}
   rules:
     - name: always_trigger
