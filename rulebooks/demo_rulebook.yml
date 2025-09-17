@@ -2,9 +2,7 @@
 - name: Demo Rulebook
   hosts: localhost
   sources:
-    - name: builtin
-      source_name: builtin
-      source_args: {}
+    - builtin: {}
   rules:
     - name: add_to_audit
       condition:
