@@ -2,11 +2,13 @@
 - name: demo
   hosts: localhost
   sources:
-    - ansible.eda.periodic:
-        interval: 5
+    - EventSource:
+        name: builtin
+        source_name: builtin
+        source_args: {}
   rules:
-    - name: always_true
+    - name: always_trigger
       condition: "true"
       actions:
         - debug:
-            msg: "Periodic event triggered: {{ event }}"
+            msg: "This is a built-in test event: {{ event }}"
