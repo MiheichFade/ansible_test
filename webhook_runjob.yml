@@ -1,0 +1,19 @@
+---
+- name: demo-webhook
+  hosts: localhost
+
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+        endpoint: /webhook
+
+  rules:
+    - name: on-hello
+      condition: event.payload.message == "hello"
+      action:
+        run_job_template:
+          name: "demo-job-template"
+          organization: "Default"
+          extra_vars:
+            incoming_event: "{{ event.payload }}"
