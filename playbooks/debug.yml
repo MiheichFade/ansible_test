@@ -1,0 +1,4 @@
+---
+- name: Debug task
+  ansible.builtin.debug:
+    msg: "Debugging Rulebook execution"
