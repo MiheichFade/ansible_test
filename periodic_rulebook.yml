@@ -1,0 +1,14 @@
+---
+- name: demo-periodic
+  hosts: localhost
+
+  sources:
+    - ansible.eda.periodic:
+        interval: 10    # событие каждые 10 секунд
+
+  rules:
+    - name: periodic-debug
+      condition: True
+      action:
+        debug:
+          msg: "Periodic event triggered ({{ event }})"
