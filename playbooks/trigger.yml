@@ -1,0 +1,9 @@
+---
+- name: Trigger minimal-rulebook
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Generate dummy event
+      set_stats:
+        data:
+          event: "manual_trigger"
