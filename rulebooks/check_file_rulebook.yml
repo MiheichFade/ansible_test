@@ -1,0 +1,18 @@
+---
+- name: Demo Rulebook
+  hosts: localhost
+  sources:
+    - name: demo_source
+      source_name: builtin
+      source_args: {}
+  rules:
+    - name: File created check
+      condition:
+        all:
+          - fact:
+              name: demo_file_exists
+              value: true
+      actions:
+        - action: debug
+          action_args:
+            msg: "File /tmp/demo_file.txt detected — Rule fired!"
