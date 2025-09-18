@@ -1,31 +1,26 @@
 ---
-name: Demo Rulebook
+name: Simple Demo Rulebook
 hosts:
   - localhost
 
 sources:
   - EventSource:
-      name: kafka_source
-      source_name: ansible.eda.kafka
-      source_args:
-        bootstrap_servers: "kafka:9092"
-        topics: ["demo_topic"]
-        group_id: "demo_group"
-        auto_offset_reset: "earliest"
-      source_filters: []
+      name: dummy_source
+      source_name: ansible.eda.builtin.dummy
+      source_args: {}
 
 rules:
   - Rule:
-      name: File created check
+      name: Always Trigger Rule
       condition:
         AllCondition:
           - EqualsExpression:
               lhs:
-                Event: "fileexists"
+                Event: "always_true"
               rhs:
                 Boolean: true
       actions:
         - Action:
             action: debug
             action_args:
-              msg: "File /tmp/demo_file.txt detected — Rule fired!"
+              msg: "This rule always triggers!"
