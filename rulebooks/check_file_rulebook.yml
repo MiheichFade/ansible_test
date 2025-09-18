@@ -1,9 +1,17 @@
 ---
-version: 1
+name: check_file
+hosts: localhost
 rules:
   - name: simple_rule
-    hosts: all
-    tasks:
-      - name: Say hello
-        debug:
-          msg: "Привет! Это самый простой rule в Ansible Rulebook."
+    sources:
+      - ansible.eda.range:
+          start: 1
+          end: 1
+          step: 1
+    rules:
+      - name: Print Hello
+        condition: event.range.value == 1
+        action:
+          run_playbook:
+            name: hello_playbook
+            organization: Default
