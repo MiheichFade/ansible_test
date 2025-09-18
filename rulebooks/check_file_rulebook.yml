@@ -4,10 +4,8 @@
   sources: []
 
   rules:
-    - name: simple-playbook
+    - name: simple-debug
       condition: True
       action:
-        run_playbook:
-          name: hello_trigger          # playbook, который будет запускаться
-          organization: Default        # твоя организация
-          inventory: Default           # inventory, который доступен в UI
+        debug:
+          msg: "Простейшее событие срабатывает ({{ event | default('no event') }})"
