@@ -16,7 +16,13 @@ sources:
 
 rules:
   - name: File created check
-    condition: "event.fileexists == true"
+    condition:
+      AllCondition:
+        - EqualsExpression:
+            lhs:
+              Event: fileexists
+            rhs:
+              Boolean: true
     actions:
       - action: debug
         action_args:
