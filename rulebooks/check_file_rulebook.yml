@@ -4,26 +4,30 @@ hosts:
   - localhost
 
 sources:
-  - name: kafka_source
-    source_name: ansible.eda.kafka
-    source_args:
-      bootstrap_servers: "kafka:9092"
-      topics:
-        - demo_topic
-      group_id: demo_group
-      auto_offset_reset: earliest
-    source_filters: []
+  - EventSource:
+      name: kafka_source
+      source_name: ansible.eda.kafka
+      source_args:
+        bootstrap_servers: "kafka:9092"
+        topics:
+          - demo_topic
+        group_id: demo_group
+        auto_offset_reset: earliest
+      source_filters: []
 
 rules:
-  - name: File created check
-    condition:
-      AllCondition:
-        - EqualsExpression:
-            lhs:
-              Event: fileexists
-            rhs:
-              Boolean: true
-    actions:
-      - action: debug
-        action_args:
-          msg: "File /tmp/demo_file.txt detected — Rule fired!"
+  - Rule:
+      name: File created check
+      condition:
+        AllCondition:
+          - EqualsExpression:
+              lhs:
+                Event: "fileexists"
+              rhs:
+                Boolean: true
+      actions:
+        - Action:
+            action: debug
+            action_args:
+              msg: "File /tmp/demo_file.txt detected — Rule fired!"
+      enabled: true
