@@ -1,17 +1,12 @@
 ---
-- name: check_file
+- name: minimal-rulebook
   hosts: localhost
+
+  sources: []
+
   rules:
-    - name: simple_rule
-      sources:
-        - ansible.eda.range:
-            start: 1
-            end: 1
-            step: 1
-      rules:
-        - name: Print Hello
-          condition: event.range.value == 1
-          action:
-            run_playbook:
-              name: hello_playbook
-              organization: Default
+    - name: simple-debug
+      condition: True
+      action:
+        debug:
+          msg: "Простейшее событие срабатывает ({{ event | default('no event') }})"
