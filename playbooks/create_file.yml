@@ -1,0 +1,13 @@
+---
+- name: Create demo file
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create /tmp/demo_file.txt
+      file:
+        path: /tmp/demo_file.txt
+        state: touch
+
+    - name: Set fact demo_file_exists true
+      set_fact:
+        demo_file_exists: true
