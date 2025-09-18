@@ -1,14 +1,9 @@
 ---
 - name: Demo Rulebook
   hosts: localhost
-  sources:
-    - name: demo_source
-      builtin:
-        facts:
-          demofileexists: true        # <-- без подчёркивания!
   rules:
     - name: File created check
-      condition: demofileexists == true
+      condition: myfact == true
       actions:
         - debug:
-            msg: "File /tmp/demo_file.txt detected — Rule fired!"
+            msg: "File detected — Rule fired!"
