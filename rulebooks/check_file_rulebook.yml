@@ -3,12 +3,9 @@ name: Always Trigger
 hosts: []
 
 rules:
-  - Rule:
-      name: Always Fire
-      condition:
-        AllCondition: []  # пустой список = всегда True
-      actions:
-        - Action:
-            action: debug
-            action_args:
-              msg: "Rule triggered successfully"
+  - name: Always Fire
+    condition:
+      AllCondition: []
+    actions:
+      - debug:
+          msg: "Rule triggered successfully"
