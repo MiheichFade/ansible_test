@@ -1,11 +1,14 @@
 ---
 - name: minimal-rulebook
   hosts: localhost
-  sources: []
+
+  # Источник событий — локальный, для теста
+  sources:
+    - ansible.eda.local: {}
 
   rules:
     - name: simple-debug
       condition: True
       action:
         debug:
-          msg: "Простейшее событие срабатывает ({{ event | default('no event') }})"
+          msg: "Событие сработало! Event: {{ event }}"
