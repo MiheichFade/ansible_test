@@ -1,0 +1,7 @@
+---
+- name: Triggered playbook
+  hosts: localhost
+  tasks:
+    - name: Show message
+      debug:
+        msg: "Rule triggered via playbook"
