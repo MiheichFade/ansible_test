@@ -3,24 +3,15 @@ name: Minimal Demo Rulebook
 hosts:
   - localhost
 
-sources:
-  - EventSource:
-      name: dummy_source
-      source_name: ansible.eda.builtin.dummy
-      source_args: {}
+sources: []
 
 rules:
   - Rule:
-      name: Always Trigger Rule
+      name: Always Trigger
       condition:
-        AllCondition:
-          - EqualsExpression:
-              lhs:
-                Event: "always_true"
-              rhs:
-                Boolean: true
+        AllCondition: []
       actions:
         - Action:
             action: debug
             action_args:
-              msg: "This rule always triggers!"
+              msg: "This rule always triggers"
