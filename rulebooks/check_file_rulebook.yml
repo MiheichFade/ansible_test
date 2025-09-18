@@ -5,10 +5,10 @@
     - name: demo_source
       builtin:
         facts:
-          demo_file_exists: true      # <-- хотя бы один факт, иначе будет пусто
+          demofileexists: true        # <-- без подчёркивания!
   rules:
     - name: File created check
-      condition: demo_file_exists == true
+      condition: demofileexists == true
       actions:
         - debug:
             msg: "File /tmp/demo_file.txt detected — Rule fired!"
