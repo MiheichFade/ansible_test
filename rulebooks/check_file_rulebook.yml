@@ -7,6 +7,8 @@
         bootstrap_servers: "kafka:9092"
         topics:
           - demo_topic
+        group_id: "demo_group"
+        auto_offset_reset: "earliest"
   rules:
     - name: File created check
       condition: event.fileexists == true
