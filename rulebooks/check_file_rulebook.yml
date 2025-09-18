@@ -1,12 +1,12 @@
 ---
 - name: minimal-rulebook
   hosts: localhost
-
   sources: []
 
   rules:
-    - name: simple-debug
+    - name: simple-playbook
       condition: True
       action:
-        debug:
-          msg: "Простейшее событие срабатывает ({{ event | default('no event') }})"
+        run_playbook:
+          name: hello_trigger
+          organization: Default
