@@ -8,5 +8,6 @@
       condition: True
       action:
         run_playbook:
-          name: hello_trigger
-          organization: Default
+          name: hello_trigger          # playbook, который будет запускаться
+          organization: Default        # твоя организация
+          inventory: Default           # inventory, который доступен в UI
