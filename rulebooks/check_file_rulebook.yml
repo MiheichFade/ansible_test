@@ -5,7 +5,7 @@ hosts: []
 rules:
   - name: Always Fire
     condition:
-      AllCondition: []
+      all: []        # пустой список = всегда True
     actions:
       - debug:
           msg: "Rule triggered successfully"
