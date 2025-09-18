@@ -9,15 +9,11 @@
           - demo_topic
         group_id: "demo_group"
         auto_offset_reset: "earliest"
-        session_timeout_ms: 10000      # 10 секунд
-        heartbeat_interval_ms: 3000    # 3 секунды
+        session_timeout_ms: 10000
+        heartbeat_interval_ms: 3000
   rules:
     - name: File created check
-      condition:
-        all:
-          - fact:
-              name: event.fileexists
-              value: true
+      condition: "event.fileexists == true"
       actions:
         - action: debug
           action_args:
