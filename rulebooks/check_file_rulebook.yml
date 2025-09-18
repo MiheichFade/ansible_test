@@ -1,9 +1,15 @@
 ---
 - name: Demo Rulebook
   hosts: localhost
+  sources:
+    - name: kafka_source
+      ansible.eda.kafka:
+        bootstrap_servers: "kafka:9092"
+        topics:
+          - demo_topic
   rules:
     - name: File created check
-      condition: myfact == true
+      condition: event.fileexists == true
       actions:
         - debug:
-            msg: "File detected — Rule fired!"
+            msg: "File /tmp/demo_file.txt detected — Rule fired!"
