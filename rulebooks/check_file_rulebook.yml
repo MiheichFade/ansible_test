@@ -3,8 +3,8 @@
   hosts: localhost
 
   sources:
-    - tick:
-        interval: 10   # событие каждые 10 секунд
+    - ansible.eda.tick:
+        delay: 10   # событие каждые 10 секунд
 
   rules:
     - name: periodic-debug
