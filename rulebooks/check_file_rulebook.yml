@@ -1,5 +1,5 @@
 ---
-- name: Demo Rulebook
+- name: Demo Rulebook Kafka
   hosts: localhost
   sources:
     - name: kafka_source
@@ -9,9 +9,16 @@
           - demo_topic
         group_id: "demo_group"
         auto_offset_reset: "earliest"
+        session_timeout_ms: 10000      # 10 секунд
+        heartbeat_interval_ms: 3000    # 3 секунды
   rules:
     - name: File created check
-      condition: event.fileexists == true
+      condition:
+        all:
+          - fact:
+              name: event.fileexists
+              value: true
       actions:
-        - debug:
+        - action: debug
+          action_args:
             msg: "File /tmp/demo_file.txt detected — Rule fired!"
