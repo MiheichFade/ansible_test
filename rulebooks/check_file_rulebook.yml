@@ -1,20 +1,23 @@
 ---
-- name: Demo Rulebook Kafka
-  hosts: localhost
-  sources:
-    - name: kafka_source
-      ansible.eda.kafka:
-        bootstrap_servers: "kafka:9092"
-        topics:
-          - demo_topic
-        group_id: "demo_group"
-        auto_offset_reset: "earliest"
-        session_timeout_ms: 10000
-        heartbeat_interval_ms: 3000
-  rules:
-    - name: File created check
-      condition: "event.fileexists == true"
-      actions:
-        - action: debug
-          action_args:
-            msg: "File /tmp/demo_file.txt detected — Rule fired!"
+name: Demo Rulebook
+hosts:
+  - localhost
+
+sources:
+  - name: kafka_source
+    source_name: ansible.eda.kafka
+    source_args:
+      bootstrap_servers: "kafka:9092"
+      topics:
+        - demo_topic
+      group_id: demo_group
+      auto_offset_reset: earliest
+    source_filters: []
+
+rules:
+  - name: File created check
+    condition: "event.fileexists == true"
+    actions:
+      - action: debug
+        action_args:
+          msg: "File /tmp/demo_file.txt detected — Rule fired!"
