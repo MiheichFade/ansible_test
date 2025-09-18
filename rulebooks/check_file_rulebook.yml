@@ -1,12 +1,12 @@
 ---
-name: Minimal Always Trigger
+name: Always Trigger
 hosts: []
 
 rules:
   - Rule:
-      name: Always fire
+      name: Always Fire
       condition:
-        AllCondition: []   # пустой = всегда true
+        AllCondition: []  # пустой список = всегда True
       actions:
         - Action:
             action: debug
