@@ -1,17 +1,13 @@
 ---
-name: Minimal Demo Rulebook
-hosts:
-  - localhost
-
-sources: []
+name: Minimal Always Trigger
+hosts: []
 
 rules:
   - Rule:
-      name: Always Trigger
+      name: Always fire
       condition:
-        AllCondition: []
+        AllCondition: []   # Пустой список = условие всегда true
       actions:
         - Action:
             action: debug
-            action_args:
-              msg: "This rule always triggers"
+            action_args: {}  # Пустой словарь, чтобы Rulebook не падал
