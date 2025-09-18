@@ -6,8 +6,9 @@ rules:
   - Rule:
       name: Always fire
       condition:
-        AllCondition: []   # Пустой список = условие всегда true
+        AllCondition: []   # пустой = всегда true
       actions:
         - Action:
             action: debug
-            action_args: {}  # Пустой словарь, чтобы Rulebook не падал
+            action_args:
+              msg: "Rule triggered successfully"
