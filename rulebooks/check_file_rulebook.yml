@@ -1,11 +1,9 @@
 ---
-name: Always Trigger
-hosts: []
-
+version: 1
 rules:
-  - name: Always Fire
-    condition:
-      all: []        # пустой список = всегда True
-    actions:
-      - debug:
-          msg: "Rule triggered successfully"
+  - name: simple_rule
+    hosts: all
+    tasks:
+      - name: Say hello
+        debug:
+          msg: "Привет! Это самый простой rule в Ansible Rulebook."
