@@ -3,8 +3,8 @@
   hosts: localhost
   sources:
     - name: demo_source
-      source_name: builtin
-      source_args: {}
+      builtin:
+        args: {}
   rules:
     - name: File created check
       condition:
