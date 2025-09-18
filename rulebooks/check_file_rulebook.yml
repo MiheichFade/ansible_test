@@ -4,15 +4,11 @@
   sources:
     - name: demo_source
       builtin:
-        args: {}
+        facts:
+          demo_file_exists: true      # <-- хотя бы один факт, иначе будет пусто
   rules:
     - name: File created check
-      condition:
-        all:
-          - fact:
-              name: demo_file_exists
-              value: true
+      condition: demo_file_exists == true
       actions:
-        - action: debug
-          action_args:
+        - debug:
             msg: "File /tmp/demo_file.txt detected — Rule fired!"
