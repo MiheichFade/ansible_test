@@ -2,13 +2,13 @@
 - name: minimal-rulebook
   hosts: localhost
 
-  # Источник событий — локальный, для теста
   sources:
-    - ansible.eda.local: {}
+    - tick:
+        interval: 10   # событие каждые 10 секунд
 
   rules:
-    - name: simple-debug
+    - name: periodic-debug
       condition: True
       action:
         debug:
-          msg: "Событие сработало! Event: {{ event }}"
+          msg: "Событие tick сработало! Event: {{ event }}"
