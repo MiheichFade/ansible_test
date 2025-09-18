@@ -9,10 +9,9 @@ sources:
       source_name: ansible.eda.kafka
       source_args:
         bootstrap_servers: "kafka:9092"
-        topics:
-          - demo_topic
-        group_id: demo_group
-        auto_offset_reset: earliest
+        topics: ["demo_topic"]
+        group_id: "demo_group"
+        auto_offset_reset: "earliest"
       source_filters: []
 
 rules:
@@ -30,4 +29,3 @@ rules:
             action: debug
             action_args:
               msg: "File /tmp/demo_file.txt detected — Rule fired!"
-      enabled: true
